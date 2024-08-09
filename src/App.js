@@ -1,9 +1,10 @@
 import './App.css';
+import Signup from './pages/Signup';
 
 function App() {
   return (
-    <div className="App">
-     <span className='text-red-500'>Hello World</span>
+    <div className="w-full h-dvh">
+    <Signup/>
     </div>
   );
 }
