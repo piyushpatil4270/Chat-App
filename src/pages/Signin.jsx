@@ -12,7 +12,9 @@ const Signup = ({setIsAuth}) => {
     try {
       const res=await axios.post("http://localhost:5500/auth/signin",{email:email,password:password})
       if(res.status===202){
-        alert(res.data)
+        alert(res.data.msg)
+        console.log("Data is ",res.data)
+        localStorage.setItem("Ctoken",res.data.token)
         setIsAuth(true)
       }
       if(res.status===201||res.status===200){
