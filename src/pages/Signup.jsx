@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios"
-const Signup = () => {
+import { Link } from 'react-router-dom';
+const Signup = ({setIsAuth}) => {
   const [username,setUsername]=useState("")
   const [phone,setPhone]=useState("")
   const [email,setEmail]=useState("")
@@ -12,8 +13,15 @@ const Signup = () => {
         return
       }
       const res=await axios.post("http://localhost:5500/auth/signup",{username:username,email:email,phone:phone,password:password})
+      if(res.status===202 || res.status===200){
+        alert(res.data)
+        if(res.status===202)setIsAuth(true)
+        return
+      }
+    
     } catch (error) {
       console.log(error)
+      
     }
   }
   return (
@@ -54,10 +62,11 @@ const Signup = () => {
             onChange={(e)=>{setPassword(e.target.value)}}
           />
         </div>
-        <div className='w-full flex p-2 justify-center'>
+        <div className='w-full flex p-2 gap-4 justify-center items-center'>
           <button className='bg-green-500 text-white text-[15px] px-3 py-1 rounded-sm'  onClick={handleSignup}>
             Sign Up
           </button>
+          <Link to={"/signin"} className='text-[14px] border-0 border-b border-b-blue-700'>Log In</Link>
         </div>
       </div>
     </div>
