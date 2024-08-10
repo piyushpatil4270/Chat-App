@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios"
 import { Link } from 'react-router-dom';
-const Signup = ({setIsAuth}) => {
+const Signup = () => {
   const [username,setUsername]=useState("")
   const [phone,setPhone]=useState("")
   const [email,setEmail]=useState("")
@@ -15,7 +15,6 @@ const Signup = ({setIsAuth}) => {
       const res=await axios.post("http://localhost:5500/auth/signup",{username:username,email:email,phone:phone,password:password})
       if(res.status===202 || res.status===200){
         alert(res.data)
-        if(res.status===202)setIsAuth(true)
         return
       }
     
