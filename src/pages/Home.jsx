@@ -27,10 +27,9 @@ const Home = () => {
         alert(error)
     }
  }
-
- useEffect(()=>{
-getMessages()
- },[])
+setInterval(() => {
+    getMessages()
+}, 1000);
     return (
         <div className='w-full h-full flex flex-col justify-start p-4'>
             <div className='w-full flex flex-col items-center mb-4'>
